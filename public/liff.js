@@ -112,18 +112,20 @@ function registerButtonHandlers() {
         }
     });
     document.getElementById('getDecodedIdTokenButton').addEventListener('click', function() {
+        // TODO: JSONペイロードに合うために変えて
         document.getElementById('displayDecodedIdToken').textContent = liff.getDecodedIDToken();
     });
     document.getElementById('getProfileButton').addEventListener('click', function() {
-        const profile = liff.getProfile();
-
-        if (!profile) {
-            document.getElementById('displayProfile').textContent = String(profile)
-        } else {
-            document.getElementById('displayProfileUserId').textContent = 'User ID: ' + profile.userId;
-            document.getElementById('displayProfileDisplayName').textContent = 'Display Name: ' + profile.displayName;
-            document.getElementById('displayProfilePicture').src = profile.pictureUrl;
-            document.getElementById('displayStatusMessage').textContent = 'Text Content: ' + profile.statusMessage;
-        }
+        const profile = liff.getProfile()
+            .then(profile => function (profile) {
+                if (!profile) {
+                    document.getElementById('displayProfile').textContent = String(profile);
+                } else {
+                    document.getElementById('displayProfileUserId').textContent = 'User ID: ' + profile.userId;
+                    document.getElementById('displayProfileDisplayName').textContent = 'Display Name: ' + profile.displayName;
+                    document.getElementById('displayProfilePicture').src = profile.pictureUrl;
+                    document.getElementById('displayStatusMessage').textContent = 'Text Content: ' + profile.statusMessage;
+                }
+            });
     });
 }
