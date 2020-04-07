@@ -21,7 +21,7 @@ window.onload = function() {
         myLiffId = defaultLiffId;
         initializeLiffOrDie(myLiffId);
     }
-}
+};
 
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
