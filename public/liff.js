@@ -103,12 +103,27 @@ function registerButtonHandlers() {
         if (!context) {
             document.getElementById('displayContext').textContent = String(context);
         } else {
-            document.getElementById('displayContextType').textContent = context.type;
-            document.getElementById('displayContextViewType').textContent = context.viewType;
-            document.getElementById('displayContextUserId').textContent = context.userId;
-            document.getElementById('displayContextUtouId').textContent = context.utouId;
-            document.getElementById('displayContextRoomId').textContent = context.roomId;
-            document.getElementById('displayContextGroupId').textContent = context.groupId;
+            document.getElementById('displayContextType').textContent = 'Type: ' + context.type;
+            document.getElementById('displayContextViewType').textContent = 'View Type: ' + context.viewType;
+            document.getElementById('displayContextUserId').textContent = 'User ID: ' + context.userId;
+            document.getElementById('displayContextUtouId').textContent = 'utou ID: ' + context.utouId;
+            document.getElementById('displayContextRoomId').textContent = 'Room ID: ' + context.roomId;
+            document.getElementById('displayContextGroupId').textContent = 'Group ID: ' + context.groupId;
+        }
+    });
+    document.getElementById('getDecodedIdTokenButton').addEventListener('click', function() {
+        document.getElementById('displayDecodedIdToken').textContent = liff.getDecodedIDToken();
+    });
+    document.getElementById('getProfileButton').addEventListener('click', function() {
+        const profile = liff.getProfile();
+
+        if (!profile) {
+            document.getElementById('displayProfile').textContent = String(profile)
+        } else {
+            document.getElementById('displayProfileUserId').textContent = 'User ID: ' + profile.userId;
+            document.getElementById('displayProfileDisplayName').textContent = 'Display Name: ' + profile.displayName;
+            document.getElementById('displayProfilePicture').src = profile.pictureUrl;
+            document.getElementById('displayStatusMessage').textContent = 'Text Content: ' + profile.statusMessage;
         }
     });
 }
