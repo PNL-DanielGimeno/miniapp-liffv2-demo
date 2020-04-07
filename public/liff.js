@@ -2,6 +2,8 @@ window.onload = function() {
     const useNodeJS = true;
     const defaultLiffId = "";
 
+    console.log('test1')
+
     let myLiffId = "";
 
     if (useNodeJS) {
@@ -16,7 +18,7 @@ window.onload = function() {
             .catch(function(error) {
                 document.getElementById('liffAppContent').classList.add('hidden');
                 document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-                document.getElementById('nodeLiffIdErrorMessage').textContent += 'tried to initialize and died; ';
+                document.getElementById('nodeLiffIdErrorMessage').textContent = 'tried to initialize and died; ';
             });
     } else {
         myLiffId = defaultLiffId;
@@ -28,7 +30,7 @@ function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
         document.getElementById('liffAppContent').classList.add('hidden');
         document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-        document.getElementById('nodeLiffIdErrorMessage').classList.textContent += 'myLiffId null; ';
+        document.getElementById('nodeLiffIdErrorMessage').classList.textContent = 'myLiffId null; ';
     } else {
         initializeLiff(myLiffId);
     }
@@ -45,7 +47,7 @@ function initializeLiff(myLiffId) {
         .catch((err) => {
             document.getElementById('liffAppContent').classList.add('hidden');
             document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-            document.getElementById('nodeLiffIdErrorMessage').textContent += 'initLiff failed; ';
+            document.getElementById('nodeLiffIdErrorMessage').textContent = 'initLiff failed; ';
         });
 }
 
@@ -54,7 +56,7 @@ function initializeApp() {
         .catch((err) => {
             document.getElementById('liffAppContent').classList.add('hidden');
             document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-            document.getElementById('nodeLiffIdErrorMessage').textContent += 'register buttons failed; ';
+            document.getElementById('nodeLiffIdErrorMessage').textContent = 'register buttons failed; ';
         });
 }
 
