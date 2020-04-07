@@ -16,7 +16,7 @@ window.onload = function() {
             .catch(function(error) {
                 document.getElementById('liffAppContent').classList.add('hidden');
                 document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-                document.getElementById('nodeLiffIdErrorMessage').textContent = 'tried to initialize and died; ';
+                document.getElementById('nodeLiffIdErrorMessage').textContent = 'tried to initialize and died';
             });
     } else {
         myLiffId = defaultLiffId;
@@ -28,7 +28,7 @@ function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
         document.getElementById('liffAppContent').classList.add('hidden');
         document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-        document.getElementById('nodeLiffIdErrorMessage').classList.textContent = 'myLiffId null; ';
+        document.getElementById('nodeLiffIdErrorMessage').classList.textContent = 'myLiffId null';
     } else {
         initializeLiff(myLiffId);
     }
@@ -45,7 +45,7 @@ function initializeLiff(myLiffId) {
         .catch((err) => {
             document.getElementById('liffAppContent').classList.add('hidden');
             document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-            document.getElementById('nodeLiffIdErrorMessage').textContent = 'initLiff fail; ';
+            document.getElementById('nodeLiffIdErrorMessage').textContent = 'initLiff fail';
         });
 }
 
@@ -55,6 +55,18 @@ function initializeApp() {
 
 function registerButtonHandlers() {
     document.getElementById('getOSButton').addEventListener('click', function() {
-        document.getElementById('displayOSDiv').textContent = liff.getOS();
+        document.getElementById('displayOS').textContent = liff.getOS();
+    });
+    document.getElementById('getLanguageButton').addEventListener('click', function() {
+        document.getElementById('displayLanguage').textContent = liff.getLanguage();
+    });
+    document.getElementById('getVersionButton').addEventListener('click', function(){
+        document.getElementById('displayVersion').textContent = liff.getVersion();
+    });
+    document.getElementById('isInClientButton').addEventListener('click', function(){
+        document.getElementById('displayIsInClient').textContent = liff.isInClient();
+    });
+    document.getElementById('isLoggedInButton').addEventListener('click', function(){
+        document.getElementById('displayIsLoggedIn').textContent = liff.isLoggedIn();
     });
 }
