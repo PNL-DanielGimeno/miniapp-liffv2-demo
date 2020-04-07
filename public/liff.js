@@ -99,6 +99,17 @@ function registerButtonHandlers() {
         document.getElementById('displayAccessToken').textContent = String(accessToken);
     });
     document.getElementById('getContextDivButton').addEventListener('click', function() {
-        document.getElementById('displayContextDiv').textContent = String(liff.getContext());
+        const context = liff.getContext();
+        if (context) {
+            document.getElementById('displayContextType').textContent = context.type;
+            document.getElementById('displayContextViewType').textContent = context.viewType;
+            document.getElementById('displayContextUserId').textContent = context.userId;
+            document.getElementById('displayContextUtouId').textContent = context.utouId;
+            document.getElementById('displayContextRoomId').textContent = context.roomId;
+            document.getElementById('displayContextGroupId').textContent = context.groupId;
+        } else {
+            document.getElementById('displayContext').textContent = String(null);
+        }
+        document.getElementById('displayContext').textContent = String(liff.getContext());
     });
 }
