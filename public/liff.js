@@ -2,8 +2,6 @@ window.onload = function() {
     const useNodeJS = true;
     const defaultLiffId = "";
 
-    console.log('test1')
-
     let myLiffId = "";
 
     if (useNodeJS) {
@@ -47,17 +45,12 @@ function initializeLiff(myLiffId) {
         .catch((err) => {
             document.getElementById('liffAppContent').classList.add('hidden');
             document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-            document.getElementById('nodeLiffIdErrorMessage').textContent = 'initLiff failed; ';
+            document.getElementById('nodeLiffIdErrorMessage').textContent = 'initLiff fail; ';
         });
 }
 
 function initializeApp() {
-    registerButtonHandlers()
-        .catch((err) => {
-            document.getElementById('liffAppContent').classList.add('hidden');
-            document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
-            document.getElementById('nodeLiffIdErrorMessage').textContent = 'register buttons failed; ';
-        });
+    registerButtonHandlers();
 }
 
 function registerButtonHandlers() {
