@@ -64,10 +64,10 @@ function registerButtonHandlers() {
         document.getElementById('displayVersion').textContent = liff.getVersion();
     });
     document.getElementById('isInClientButton').addEventListener('click', function() {
-        document.getElementById('displayIsInClient').textContent = liff.isInClient();
+        document.getElementById('displayInClient').textContent = liff.isInClient();
     });
     document.getElementById('isLoggedInButton').addEventListener('click', function() {
-        document.getElementById('displayIsLoggedIn').textContent = liff.isLoggedIn();
+        document.getElementById('displayLoggedIn').textContent = liff.isLoggedIn();
     });
     document.getElementById('isApiAvailableButton').addEventListener('click', function() {
         if (liff.isApiAvailable('shareTargetPicker')){
@@ -83,7 +83,22 @@ function registerButtonHandlers() {
                     alert('Failed to launch ShareTargetPicker')
                 })
         } else {
-            document.getElementById('displayIsApiAvailable').textContent = 'No';
+            document.getElementById('displayApiAvailable').textContent = 'No';
         }
+    });
+    document.getElementById('getAccessTokenButton').addEventListener('click', function() {
+        const accessToken = liff.getAccessToken();
+        if (accessToken) {
+            fetch('https://api...', {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: 'Bearer ${accessToken}'
+                }
+            });
+        }
+        document.getElementById('displayAccessToken').textContent = String(accessToken);
+    });
+    document.getElementById('getContextDivButton').addEventListener('click', function() {
+        document.getElementById('displayContextDiv').textContent = String(liff.getContext());
     });
 }
