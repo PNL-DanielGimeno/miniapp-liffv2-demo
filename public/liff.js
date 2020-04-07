@@ -16,6 +16,7 @@ window.onload = function() {
             .catch(function(error) {
                 document.getElementById('liffAppContent').classList.add('hidden');
                 document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
+                document.getElementById('nodeLiffIdErrorMessage').textContent += 'tried to initialize and died; ';
             });
     } else {
         myLiffId = defaultLiffId;
@@ -27,6 +28,7 @@ function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
         document.getElementById('liffAppContent').classList.add('hidden');
         document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
+        document.getElementById('nodeLiffIdErrorMessage').classList.textContent += 'myLiffId null; ';
     } else {
         initializeLiff(myLiffId);
     }
@@ -42,12 +44,18 @@ function initializeLiff(myLiffId) {
         })
         .catch((err) => {
             document.getElementById('liffAppContent').classList.add('hidden');
-            document.getElementById('liffInitErrorMessage').classList.remove('hidden');
+            document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
+            document.getElementById('nodeLiffIdErrorMessage').textContent += 'initLiff failed; ';
         });
 }
 
 function initializeApp() {
-    registerButtonHandlers();
+    registerButtonHandlers()
+        .catch((err) => {
+            document.getElementById('liffAppContent').classList.add('hidden');
+            document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
+            document.getElementById('nodeLiffIdErrorMessage').textContent += 'register buttons failed; ';
+        });
 }
 
 function registerButtonHandlers() {
