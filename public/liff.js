@@ -100,16 +100,15 @@ function registerButtonHandlers() {
     });
     document.getElementById('getContextDivButton').addEventListener('click', function() {
         const context = liff.getContext();
-        if (context) {
+        if (!context) {
+            document.getElementById('displayContext').textContent = String(context);
+        } else {
             document.getElementById('displayContextType').textContent = context.type;
             document.getElementById('displayContextViewType').textContent = context.viewType;
             document.getElementById('displayContextUserId').textContent = context.userId;
             document.getElementById('displayContextUtouId').textContent = context.utouId;
             document.getElementById('displayContextRoomId').textContent = context.roomId;
             document.getElementById('displayContextGroupId').textContent = context.groupId;
-        } else {
-            document.getElementById('displayContext').textContent = String(null);
         }
-        document.getElementById('displayContext').textContent = String(liff.getContext());
     });
 }
