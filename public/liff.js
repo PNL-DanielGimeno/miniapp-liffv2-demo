@@ -112,11 +112,24 @@ function registerButtonHandlers() {
         }
     });
     document.getElementById('getDecodedIdTokenButton').addEventListener('click', function() {
-        // TODO: JSONペイロードに合うために変えて
-        document.getElementById('displayDecodedIdToken').textContent = liff.getDecodedIDToken();
+        const decodedIDToken = liff.getDecodedIDToken();
+
+        if (!decodedIDToken) {
+            document.getElementById('displayDecodedIdToken').textContent = String(decodedIDToken);
+        } else {
+            document.getElementById('displayDecodedIdTokenIss').textContent = decodedIDToken.iss;
+            document.getElementById('displayDecodedIdTokenSub').textContent = decodedIDToken.sub;
+            document.getElementById('displayDecodedIdTokenAud').textContent = decodedIDToken.aud;
+            document.getElementById('displayDecodedIdTokenExp').textContent = decodedIDToken.exp;
+            document.getElementById('displayDecodedIdTokenIat').textContent = decodedIDToken.iat;
+            document.getElementById('displayDecodedIdTokenNonce').textContent = decodedIDToken.nonce;
+            document.getElementById('displayDecodedIdTokenAmr').textContent = decodedIDToken.amr[0];
+            document.getElementById('displayDecodedIdTokenName').textContent = decodedIDToken.name;
+            document.getElementById('displayDecodedIdTokenPicture').src = decodedIDToken.picture;
+        }
     });
     document.getElementById('getProfileButton').addEventListener('click', function() {
-        const profile = liff.getProfile()
+        liff.getProfile()
             .then(profile => function (profile) {
                 if (!profile) {
                     document.getElementById('displayProfile').textContent = String(profile);
@@ -126,6 +139,9 @@ function registerButtonHandlers() {
                     document.getElementById('displayProfilePicture').src = profile.pictureUrl;
                     document.getElementById('displayStatusMessage').textContent = 'Text Content: ' + profile.statusMessage;
                 }
+            })
+            .catch(function() {
+                document.getElementById('displayProfile').textContent = "Error getting profile";
             });
     });
 }
