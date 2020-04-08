@@ -125,6 +125,7 @@ function registerButtonHandlers() {
             document.getElementById('displayDecodedIdTokenNonce').textContent = decodedIDToken.nonce;
             document.getElementById('displayDecodedIdTokenAmr').textContent = decodedIDToken.amr[0];
             document.getElementById('displayDecodedIdTokenName').textContent = decodedIDToken.name;
+            document.getElementById('displayDecodedIdTokenPictureUrl').textContent = decodedIDToken.picture;
             document.getElementById('displayDecodedIdTokenPicture').src = decodedIDToken.picture;
         }
     });
@@ -136,8 +137,9 @@ function registerButtonHandlers() {
                 } else {
                     document.getElementById('displayProfileUserId').textContent = 'User ID: ' + profile.userId;
                     document.getElementById('displayProfileDisplayName').textContent = 'Display Name: ' + profile.displayName;
+                    document.getElementById('displayProfileStatusMessage').textContent = 'Text Content: ' + profile.statusMessage;
+                    document.getElementById('displayProfilePictureUrl').textContent = 'ProPic URL: ' + profile.pictureUrl;
                     document.getElementById('displayProfilePicture').src = profile.pictureUrl;
-                    document.getElementById('displayStatusMessage').textContent = 'Text Content: ' + profile.statusMessage;
                 }
             })
             .catch(function() {
