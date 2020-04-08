@@ -157,6 +157,17 @@ function registerButtonHandlers() {
     });
     document.getElementById('sendMessagesButton').addEventListener('click', function() {
         const messageContent = document.getElementById('sendMessagesInput');
-        liff.sendMessages([messageContent]);
+        liff.sendMessages([
+            {
+                type: 'text',
+                text: messageContent
+            }
+        ])
+        .then(function() {
+            document.getElementById('sendMessagesConf').textContent = 'message sent';
+        })
+        .catch(function(err) {
+            document.getElementById('sendMessagesConf').textContent = 'message send error: ' + err;
+        });
     });
 }
