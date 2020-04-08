@@ -156,7 +156,7 @@ function registerButtonHandlers() {
             });
     });
     document.getElementById('sendMessagesButton').addEventListener('click', function() {
-        const messageContent = document.getElementById('sendMessagesInput');
+        const messageContent = document.getElementById('sendMessagesInput').value;
         liff.sendMessages([
             {
                 type: 'text',
