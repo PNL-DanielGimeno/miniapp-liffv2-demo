@@ -177,4 +177,13 @@ function registerButtonHandlers() {
             external: false
         });
     });
+    document.getElementById('scanCodeButton').addEventListener('click', function() {
+        if (liff.scanCode) {
+            liff.scanCode().then(function(result) {
+                document.getElementById('displayScanCode').textContent = result;
+            });
+        } else {
+            document.getElementById('displayScanCode').textContent = 'qr scan unavailable'
+        }
+    });
 }
