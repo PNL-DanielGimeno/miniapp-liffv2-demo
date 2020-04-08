@@ -155,4 +155,8 @@ function registerButtonHandlers() {
                 document.getElementById('displayFriendship').textContent = 'Error getting friendship'
             });
     });
+    document.getElementById('sendMessagesButton').addEventListener('click', function() {
+        const messageContent = document.getElementById('sendMessagesInput');
+        liff.sendMessages([messageContent]);
+    });
 }
