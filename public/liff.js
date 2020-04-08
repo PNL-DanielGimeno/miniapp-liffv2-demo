@@ -170,4 +170,11 @@ function registerButtonHandlers() {
             document.getElementById('sendMessagesConf').textContent = 'message send error: ' + err;
         });
     });
+    document.getElementById('openWindowButton').addEventListener('click', function() {
+        const openWindowUrl = document.getElementById('openWindowInput').value;
+        liff.openWindow({
+            url: openWindowUrl,
+            external: true
+        });
+    });
 }
