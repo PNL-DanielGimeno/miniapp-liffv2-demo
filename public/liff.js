@@ -131,7 +131,7 @@ function registerButtonHandlers() {
     });
     document.getElementById('getProfileButton').addEventListener('click', function() {
         liff.getProfile()
-            .then(profile => function (profile) {
+            .then(function (profile) {
                 if (!profile) {
                     document.getElementById('displayProfile').textContent = String(profile);
                 } else {
@@ -142,8 +142,8 @@ function registerButtonHandlers() {
                     document.getElementById('displayProfilePicture').src = profile.pictureUrl;
                 }
             })
-            .catch(function() {
-                document.getElementById('displayProfile').textContent = "Error getting profile";
+            .catch(function(err) {
+                document.getElementById('displayProfile').textContent = "Error getting profile: " + err;
             });
     });
 }
