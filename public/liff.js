@@ -146,4 +146,10 @@ function registerButtonHandlers() {
                 document.getElementById('displayProfile').textContent = "Error getting profile: " + err;
             });
     });
+    document.getElementById('getFriendshipButton').addEventListener('click', function() {
+        liff.getFriendship()
+            .then(data => {
+                document.getElementById('displayFriendship') = data.friendFlag;
+            });
+    });
 }
