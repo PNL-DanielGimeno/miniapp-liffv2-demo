@@ -123,7 +123,7 @@ function registerButtonHandlers() {
             document.getElementById('displayDecodedIdTokenExp').textContent = "exp: " + decodedIDToken.exp;
             document.getElementById('displayDecodedIdTokenIat').textContent = "iat: " + decodedIDToken.iat;
             document.getElementById('displayDecodedIdTokenNonce').textContent = "nonce: " + decodedIDToken.nonce;
-            document.getElementById('displayDecodedIdTokenAmr').textContent = "amr: " + decodedIDToken.amr[0];
+            document.getElementById('displayDecodedIdTokenAmr').textContent = "amr: " + decodedIDToken.amr;
             document.getElementById('displayDecodedIdTokenName').textContent = "name: " + decodedIDToken.name;
             document.getElementById('displayDecodedIdTokenPictureUrl').textContent = "Pic URL: " + decodedIDToken.picture;
             document.getElementById('displayDecodedIdTokenPicture').src = decodedIDToken.picture;
