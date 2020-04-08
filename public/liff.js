@@ -148,8 +148,11 @@ function registerButtonHandlers() {
     });
     document.getElementById('getFriendshipButton').addEventListener('click', function() {
         liff.getFriendship()
-            .then(data => {
-                document.getElementById('displayFriendship') = data.friendFlag;
+            .then(function (data) {
+                document.getElementById('displayFriendship') = 'Friendship: ' + data.friendFlag;
+            })
+            .catch(function(err) {
+                document.getElementById('displayFriendship').textContent = 'Error getting friendship'
             });
     });
 }
