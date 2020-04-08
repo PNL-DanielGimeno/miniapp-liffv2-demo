@@ -174,7 +174,7 @@ function registerButtonHandlers() {
         const openWindowUrl = document.getElementById('openWindowInput').value;
         liff.openWindow({
             url: openWindowUrl,
-            external: true
+            external: false
         });
     });
 }
