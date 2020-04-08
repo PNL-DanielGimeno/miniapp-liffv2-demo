@@ -117,15 +117,15 @@ function registerButtonHandlers() {
         if (!decodedIDToken) {
             document.getElementById('displayDecodedIdToken').textContent = String(decodedIDToken);
         } else {
-            document.getElementById('displayDecodedIdTokenIss').textContent = decodedIDToken.iss;
-            document.getElementById('displayDecodedIdTokenSub').textContent = decodedIDToken.sub;
-            document.getElementById('displayDecodedIdTokenAud').textContent = decodedIDToken.aud;
-            document.getElementById('displayDecodedIdTokenExp').textContent = decodedIDToken.exp;
-            document.getElementById('displayDecodedIdTokenIat').textContent = decodedIDToken.iat;
-            document.getElementById('displayDecodedIdTokenNonce').textContent = decodedIDToken.nonce;
-            document.getElementById('displayDecodedIdTokenAmr').textContent = decodedIDToken.amr[0];
-            document.getElementById('displayDecodedIdTokenName').textContent = decodedIDToken.name;
-            document.getElementById('displayDecodedIdTokenPictureUrl').textContent = decodedIDToken.picture;
+            document.getElementById('displayDecodedIdTokenIss').textContent = "iss: " + decodedIDToken.iss;
+            document.getElementById('displayDecodedIdTokenSub').textContent = "sub: " + decodedIDToken.sub;
+            document.getElementById('displayDecodedIdTokenAud').textContent = "aud: " + decodedIDToken.aud;
+            document.getElementById('displayDecodedIdTokenExp').textContent = "exp: " + decodedIDToken.exp;
+            document.getElementById('displayDecodedIdTokenIat').textContent = "iat: " + decodedIDToken.iat;
+            document.getElementById('displayDecodedIdTokenNonce').textContent = "nonce: " + decodedIDToken.nonce;
+            document.getElementById('displayDecodedIdTokenAmr').textContent = "amr: " + decodedIDToken.amr[0];
+            document.getElementById('displayDecodedIdTokenName').textContent = "name: " + decodedIDToken.name;
+            document.getElementById('displayDecodedIdTokenPictureUrl').textContent = "Pic URL: " + decodedIDToken.picture;
             document.getElementById('displayDecodedIdTokenPicture').src = decodedIDToken.picture;
         }
     });
