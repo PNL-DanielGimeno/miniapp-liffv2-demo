@@ -184,12 +184,10 @@ function registerButtonHandlers() {
                 return result.value;
             })
             .then(function(value) {
-                if (!(!value))　{
-                    liff.openWindow({
-                        url: value,
-                        external: false
-                    }):
-                }
+                liff.openWindow({
+                    url: value,
+                    external: false
+                }):
             });
         } else {
             document.getElementById('displayScanCode').textContent = 'qr scan unavailable'
