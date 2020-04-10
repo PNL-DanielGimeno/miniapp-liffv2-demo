@@ -180,7 +180,7 @@ function registerButtonHandlers() {
     document.getElementById('scanCodeButton').addEventListener('click', function() {
         if (liff.scanCode) {
             liff.scanCode().then(function(result) {
-                document.getElementById('displayScanCode').textContent = result;
+                document.getElementById('displayScanCode').textContent = result.value;
             });
         } else {
             document.getElementById('displayScanCode').textContent = 'qr scan unavailable'
