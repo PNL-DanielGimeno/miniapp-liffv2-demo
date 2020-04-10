@@ -1,4 +1,7 @@
 window.onload = function() {
+    /**
+     * ウインドーを開けてアプリを始める
+     */
     const useNodeJS = true;
     const defaultLiffId = "";
 
@@ -25,6 +28,9 @@ window.onload = function() {
 };
 
 function initializeLiffOrDie(myLiffId) {
+    /**
+     * LIFFのAPIを初期化しなければ終わる
+     */
     if (!myLiffId) {
         document.getElementById('liffAppContent').classList.add('hidden');
         document.getElementById('nodeLiffIdErrorMessage').classList.remove('hidden');
@@ -35,6 +41,9 @@ function initializeLiffOrDie(myLiffId) {
 }
 
 function initializeLiff(myLiffId) {
+    /**
+     * LIFFを初期化する
+     */
     liff
         .init({
             liffId: myLiffId
@@ -50,25 +59,38 @@ function initializeLiff(myLiffId) {
 }
 
 function initializeApp() {
+    /**
+     * アプリを初期化する
+     */
     registerButtonHandlers();
 }
 
 function registerButtonHandlers() {
+    /**
+     * ボタンの機能を登録する
+     */
+
+    //　使っているOSを取得する
     document.getElementById('getOSButton').addEventListener('click', function() {
         document.getElementById('displayOS').textContent = liff.getOS();
     });
+    //　使っている言語コードを取得する
     document.getElementById('getLanguageButton').addEventListener('click', function() {
         document.getElementById('displayLanguage').textContent = liff.getLanguage();
     });
+    //　使っているLIFFバージョンを取得する
     document.getElementById('getVersionButton').addEventListener('click', function() {
         document.getElementById('displayVersion').textContent = liff.getVersion();
     });
+    //　LINEクライエントから使っているかを取得する
     document.getElementById('isInClientButton').addEventListener('click', function() {
         document.getElementById('displayInClient').textContent = liff.isInClient();
     });
+    //　ユーザーアカウントがログインしているかを取得する
     document.getElementById('isLoggedInButton').addEventListener('click', function() {
         document.getElementById('displayLoggedIn').textContent = liff.isLoggedIn();
     });
+    //　ShareTargetPickerのAPIを使えるかを取得する
     document.getElementById('isApiAvailableButton').addEventListener('click', function() {
         if (liff.isApiAvailable('shareTargetPicker')){
             liff.shareTargetPicker([
@@ -86,6 +108,7 @@ function registerButtonHandlers() {
             document.getElementById('displayApiAvailable').textContent = 'No';
         }
     });
+    //　AccessTokenを取得する
     document.getElementById('getAccessTokenButton').addEventListener('click', function() {
         const accessToken = liff.getAccessToken();
         if (accessToken) {
@@ -98,6 +121,7 @@ function registerButtonHandlers() {
         }
         document.getElementById('displayAccessToken').textContent = String(accessToken);
     });
+    //　Contextの情報を取得する
     document.getElementById('getContextDivButton').addEventListener('click', function() {
         const context = liff.getContext();
         if (!context) {
@@ -111,6 +135,7 @@ function registerButtonHandlers() {
             document.getElementById('displayContextGroupId').textContent = 'Group ID: ' + context.groupId;
         }
     });
+    //　DecodedIdTokenの情報を取得する
     document.getElementById('getDecodedIdTokenButton').addEventListener('click', function() {
         const decodedIDToken = liff.getDecodedIDToken();
 
@@ -129,6 +154,7 @@ function registerButtonHandlers() {
             document.getElementById('displayDecodedIdTokenPicture').src = decodedIDToken.picture;
         }
     });
+    //　ユーザーアカウントの情報を取得する
     document.getElementById('getProfileButton').addEventListener('click', function() {
         liff.getProfile()
             .then(function (profile) {
@@ -146,6 +172,7 @@ function registerButtonHandlers() {
                 document.getElementById('displayProfile').textContent = "Error getting profile: " + err;
             });
     });
+    //　ユーザーアカウントとフレンド関係を取得する（もうフレンドになったし、まだフレンドじゃないし）
     document.getElementById('getFriendshipButton').addEventListener('click', function() {
         liff.getFriendship()
             .then(function (data) {
@@ -155,6 +182,7 @@ function registerButtonHandlers() {
                 document.getElementById('displayFriendship').textContent = 'Error getting friendship'
             });
     });
+    //　隣にあるフィルドの入力を使って本アカウントにメッセージを送る
     document.getElementById('sendMessagesButton').addEventListener('click', function() {
         const messageContent = document.getElementById('sendMessagesInput').value;
         liff.sendMessages([
@@ -170,6 +198,8 @@ function registerButtonHandlers() {
             document.getElementById('sendMessagesConf').textContent = 'message send error: ' + err;
         });
     });
+    //　ウェッブウインドを開ける機能（URLで「https://」を書かなければなれない）
+    //　今ボタンの隣にある入力フィールドで書いているリンクを使っている
     document.getElementById('openWindowButton').addEventListener('click', function() {
         const openWindowUrl = document.getElementById('openWindowInput').value;
         liff.openWindow({
@@ -177,6 +207,7 @@ function registerButtonHandlers() {
             external: false
         });
     });
+    //　QRコードの機能（LIFFのAPIによりAndroidだけ）
     document.getElementById('scanCodeButton').addEventListener('click', function() {
         if (liff.scanCode) {
             liff.scanCode().then(function(result) {
