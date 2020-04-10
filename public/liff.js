@@ -187,7 +187,7 @@ function registerButtonHandlers() {
                 liff.openWindow({
                     url: value,
                     external: false
-                }):
+                });
             });
         } else {
             document.getElementById('displayScanCode').textContent = 'qr scan unavailable'
